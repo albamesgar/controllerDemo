@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface ProductController {
     Product findById(Long id);
     List<Product> findByCategoryAndDepartment(Optional<Category> category, Department department);
+    Product store(Product product);
 }

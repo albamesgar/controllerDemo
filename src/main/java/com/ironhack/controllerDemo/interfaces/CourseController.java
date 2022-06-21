@@ -7,4 +7,5 @@ import java.util.List;
 public interface CourseController {
     List<Course> findAll();
     Course findById(String code);
+    Course store(Course course);
 }

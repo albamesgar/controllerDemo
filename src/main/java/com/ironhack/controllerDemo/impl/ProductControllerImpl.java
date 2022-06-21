@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -39,5 +40,11 @@ public class ProductControllerImpl implements ProductController {
             productList = productRepository.findByDepartment(department);
         }
         return productList;
+    }
+
+    @PostMapping("/products")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Product store(@RequestBody @Valid Product product){
+        return productRepository.save(product);
     }
 }
