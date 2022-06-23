@@ -1,14 +1,14 @@
-package com.ironhack.controllerDemo.impl;
+package com.ironhack.controllerDemo.controller.impl;
 
+import com.ironhack.controllerDemo.controller.dto.ProductPriceDTO;
 import com.ironhack.controllerDemo.enums.Category;
 import com.ironhack.controllerDemo.enums.Department;
-import com.ironhack.controllerDemo.interfaces.ProductController;
-import com.ironhack.controllerDemo.model.Course;
+import com.ironhack.controllerDemo.controller.interfaces.ProductController;
 import com.ironhack.controllerDemo.model.Product;
 import com.ironhack.controllerDemo.repository.ProductRepository;
+import com.ironhack.controllerDemo.service.interfaces.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -20,6 +20,9 @@ import java.util.Optional;
 public class ProductControllerImpl implements ProductController {
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private ProductService productService;
 
     @GetMapping("/products/{id}")
     @ResponseStatus(HttpStatus.OK)
@@ -46,5 +49,11 @@ public class ProductControllerImpl implements ProductController {
     @ResponseStatus(HttpStatus.CREATED)
     public Product store(@RequestBody @Valid Product product){
         return productRepository.save(product);
+    }
+
+    @PatchMapping("/products/{id}/price")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updatePrice(@PathVariable Long id, @RequestBody @Valid ProductPriceDTO productPriceDTO ){
+        productService.updatePrice(id, productPriceDTO.getPrice());
     }
 }

@@ -1,6 +1,6 @@
-package com.ironhack.controllerDemo.impl;
+package com.ironhack.controllerDemo.controller.impl;
 
-import com.ironhack.controllerDemo.interfaces.HelloWorldController;
+import com.ironhack.controllerDemo.controller.interfaces.HelloWorldController;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

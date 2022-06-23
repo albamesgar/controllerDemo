@@ -2,12 +2,14 @@ package com.ironhack.controllerDemo.model;
 
 import com.ironhack.controllerDemo.enums.Category;
 import com.ironhack.controllerDemo.enums.Department;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
 
 @Entity
+@DynamicUpdate
 public class Product {
 //    id BIGINT AUTO_INCREMENT NOT NULL,
 //    name VARCHAR(255),

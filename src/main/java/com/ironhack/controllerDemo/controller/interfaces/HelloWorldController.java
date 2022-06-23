@@ -1,4 +1,4 @@
-package com.ironhack.controllerDemo.interfaces;
+package com.ironhack.controllerDemo.controller.interfaces;
 
 import java.util.Optional;
 
